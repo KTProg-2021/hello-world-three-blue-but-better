@@ -4,11 +4,12 @@ public class Item
 {
 	private string _shape;
 	private string _color;
-
-	public Item(string shape, string color)
+	private int _weight;
+	public Item(string shape, string color, int weight)
 	{
 		_shape = shape;
 		_color = color;
+		_weight = weight;
 	}
 
 	public string Shape
