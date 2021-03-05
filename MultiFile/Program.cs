@@ -10,7 +10,7 @@ namespace MultiFile
             Item trinket = new Item("box","green");
             Person patient = new Person("Joe Smith", "5'11\"", "175 lbs");
             Automobile car = new Automobile("Toyota", "RAV4");
-            City location = new City("Framingham", "Massachusetts");
+            City location = new City("Framingham", "Massachusetts", 72308);
             Appliance kitchenItem = new Appliance("Refrigerator", 799, "black");
 
             Console.WriteLine("Hello World!");
