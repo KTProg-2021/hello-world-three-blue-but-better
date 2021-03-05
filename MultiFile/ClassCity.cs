@@ -35,6 +35,6 @@ public class City
 
 	public void display()
     {
-		Console.WriteLine("{0},  {1}", _cityName, _state, _population);
+		Console.WriteLine("{0},  {1}, {2}", _cityName, _state, _population);
     }
 }
