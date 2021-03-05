@@ -11,9 +11,10 @@ public class Person
 		_name = Name;
 		_height = Height;
 		_weight = Weight;
+	
 	}
 
-	public string Nane
+	public string Name
     {
 		get { return _name; }
 		set { _name = value; }
