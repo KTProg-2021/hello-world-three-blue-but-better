@@ -26,6 +26,6 @@ public class Item
 
 	public void display()
     {
-		Console.WriteLine("{0} {1}", _color, _shape);
+		Console.WriteLine("{0} {1} {2}", _color, _shape, _weight);
     }
 }
