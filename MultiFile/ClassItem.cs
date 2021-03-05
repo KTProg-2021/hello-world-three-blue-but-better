@@ -24,6 +24,12 @@ public class Item
 		set { _color = value; }
     }
 
+	public int Weight
+    {
+		get { return _weight; }
+		set { _weight = value; }
+	}
+
 	public void display()
     {
 		Console.WriteLine("{0} {1} {2}", _color, _shape, _weight);
