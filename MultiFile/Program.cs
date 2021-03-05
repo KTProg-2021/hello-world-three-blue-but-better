@@ -6,7 +6,7 @@ namespace MultiFile
     {
         static void Main(string[] args)
         {
-            Coordinate start = new Coordinate(12, 23);
+            Coordinate start = new Coordinate(12, 23,34);
             Item trinket = new Item("box","green", 4);
             Person patient = new Person("Joe Smith", "5'11\"", "175 lbs");
             Automobile car = new Automobile("Toyota", "RAV4");
