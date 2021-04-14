@@ -10,6 +10,7 @@ namespace textBasedGame
 
         //Constructor
         private String _name;
+        private Boolean _conditions;
         public Object(String name)
         {
             _name = name;

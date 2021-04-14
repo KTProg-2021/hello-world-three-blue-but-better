@@ -15,6 +15,51 @@ namespace textBasedGame
             Place Storage = new Place("Storage");
             Place SittingArea = new Place("Sitting Area");
 
+            //kitchen Objects
+            Object Sink = new Object("sink"); 
+            Object Fridge = new Object ("fridge");
+            Object Counter = new Object ("Counter");
+            Kitchen.setObject(sink);
+            Kitchen.setObject(Fridge);
+            Kitchen.setObject(Counter):
+            
+            //Storage Objects
+            Object CleaningCloset  = new Object ("Cleaning Closet");
+            Object FoodSupplies = new Object("Food Supplies");
+            Storage.setObject(CleaningCloset);
+            Storage.setObject(FoodSupplies);
+
+            //Bathroom 
+            Object BSink = new Object ("Bathroom Sink");
+            Object Toilet = new Object ("toilet");
+            Bathroom.setObject(Toilet);
+            Bathroom.setObject(BSink);
+
+            //Drive thru objects 
+            Object DTRegister = new object("Drive thru cash register");
+            Object counter = new object("counter");
+            DriveThru.setObject(DTRegister);
+            DriveThru.setObject(counter);
+
+            //sitting area
+            Object SodaMachine = new Object("Soda Machine");
+            Object Tables = new Object ("Tables");
+            SittingArea.setObject(Tables);
+            SittingArea.setObject(SodaMachine);
+
+            //Regiser Object 
+            Object PickUp = new Object("Pick up");
+            Object IceCreamMachine = new Object ("Ice Cream Machine");
+            Object Register = new Object ("register");
+            CashRegister.setObject(Register);
+            CashRegister.setObject(IceCreamMachine);
+            CashRegister.setObject(PickUp);
+
+            
+ 
+
+           
+
             //Add the surrounding places to the place class
             Kitchen.setPlace(CashRegister, 'n');
             Kitchen.setPlace(DriveThru, 'e');
@@ -64,7 +109,9 @@ namespace textBasedGame
                 //If the input is "a name" then aproach the object
                 if(curChar == 'a')
                 {
-                    
+                    //find object were looking for
+                    string curObject = curStr.Substring(1,curStr.Length);
+
                 }
                 else {
                     //I currently have the input working on one character - this will 
