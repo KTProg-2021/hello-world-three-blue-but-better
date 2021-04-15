@@ -4,11 +4,12 @@ public class Item
 {
 	private string _shape;
 	private string _color;
-
-	public Item(string shape, string color)
+	private int _weight;
+	public Item(string shape, string color, int weight)
 	{
 		_shape = shape;
 		_color = color;
+		_weight = weight;
 	}
 
 	public string Shape
@@ -23,8 +24,14 @@ public class Item
 		set { _color = value; }
     }
 
+	public int Weight
+    {
+		get { return _weight; }
+		set { _weight = value; }
+	}
+
 	public void display()
     {
-		Console.WriteLine("{0} {1}", _color, _shape);
+		Console.WriteLine("{0} {1} {2}", _color, _shape, _weight);
     }
 }

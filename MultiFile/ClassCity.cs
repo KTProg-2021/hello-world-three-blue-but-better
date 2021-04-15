@@ -4,11 +4,13 @@ public class City
 {
 	private string _cityName;
 	private string _state;
+	private int _population;
 
-	public City(string Name, string State)
+	public City(string Name, string State, int Population)
 	{
 		_cityName = Name;
 		_state = State;
+		_population = Population;
 	}
 
 	public string CityName
@@ -23,8 +25,16 @@ public class City
 		set { _state = value; }
     }
 
+	public int Population
+	{
+		get { return _population; }
+		set { _population = value; }
+	}
+
+
+
 	public void display()
     {
-		Console.WriteLine("{0},  {1}", _cityName, _state);
+		Console.WriteLine("{0},  {1}, {2}", _cityName, _state, _population);
     }
 }
