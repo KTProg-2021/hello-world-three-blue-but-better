@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Text;
 
 namespace textBasedGame
@@ -7,7 +8,7 @@ namespace textBasedGame
     class Place
     {
         private Place[] _north, _south, _east, _west;
-        private Object[] _objects;
+        private ArrayList _objects;
         private string _name;
         
         //Constructor
@@ -17,6 +18,7 @@ namespace textBasedGame
             _south = new Place[0];
             _east = new Place[0];
             _west = new Place[0];
+            _objects = new ArrayList();
             _name = name;
         }
 
@@ -25,10 +27,10 @@ namespace textBasedGame
         //Copy code from directions? Unless?
         public void setObject (Object value)
         {
-
+            _objects.Add(value);
         }
 
-        public Object[] getObject()
+        public ArrayList getObject()
         {
             return _objects;
         }
@@ -38,7 +40,10 @@ namespace textBasedGame
         //come up with a way to test this
         public void printObjects()
         {
-
+            for (int i = 0 ;i<_objects.Count; i++)
+            {
+                Console.WriteLine(_objects)
+            }
         }
 
 

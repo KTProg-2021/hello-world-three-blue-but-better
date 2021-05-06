@@ -8,9 +8,9 @@ namespace textBasedGame
     {
         //Array of items will need to be added
         //Constructor
-        private Item[] _items;
-        private string _name;
-        public Object(string name)
+        private String _name;
+        private Boolean _conditions;
+        public Object(String name)
         {
             _name = name;
         }
