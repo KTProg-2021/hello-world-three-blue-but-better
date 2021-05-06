@@ -7,5 +7,12 @@ namespace textBasedGame
     class Item
     {
 
+        public Item() 
+        {
+            
+        }
+
+
+
     }
 }

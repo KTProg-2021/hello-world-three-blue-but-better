@@ -7,17 +7,17 @@ namespace textBasedGame
     class Object
     {
         //Array of items will need to be added
-
         //Constructor
-        private String _name;
-        public Object(String name)
+        private Item[] _items;
+        private string _name;
+        public Object(string name)
         {
             _name = name;
         }
 
         //Get/set methods
         //Name
-        public String name
+        public string name
         {
             get
             {
