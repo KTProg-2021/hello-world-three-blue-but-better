@@ -19,9 +19,9 @@ namespace textBasedGame
             Object Sink = new Object("sink"); 
             Object Fridge = new Object ("fridge");
             Object Counter = new Object ("Counter");
-            Kitchen.setObject(sink);
+            Kitchen.setObject(Sink);
             Kitchen.setObject(Fridge);
-            Kitchen.setObject(Counter):
+            Kitchen.setObject(Counter);
             
             //Storage Objects
             Object CleaningCloset  = new Object ("Cleaning Closet");
@@ -36,8 +36,8 @@ namespace textBasedGame
             Bathroom.setObject(BSink);
 
             //Drive thru objects 
-            Object DTRegister = new object("Drive thru cash register");
-            Object counter = new object("counter");
+            Object DTRegister = new Object("Drive thru cash register");
+            Object counter = new Object("counter");
             DriveThru.setObject(DTRegister);
             DriveThru.setObject(counter);
 

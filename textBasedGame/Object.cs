@@ -30,4 +30,33 @@ namespace textBasedGame
             }
         }
     }
+    public string ItemCond(string NameOfItem, bool CondOfItem)
+    {
+        string rv = "";
+        switch (NameOfItem)
+        {
+            case "Fridge":
+                switch (CondOfItem)
+                {
+                    case true:
+                        Console.WriteLine("Fridge is running");
+                        break;
+                    case false:
+                        Console.WriteLine("Fridge is not Running");
+                        break;
+                    default:
+                        Console.WriteLine("Null");
+                        break;
+                }
+                break;
+            case :
+                Console.WriteLine("Case 2");
+                break;
+            default:
+                Console.WriteLine("Default case");
+                break;
+
+                return rv;
+        }
+    }
 }
