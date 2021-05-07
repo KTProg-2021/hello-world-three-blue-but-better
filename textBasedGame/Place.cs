@@ -42,7 +42,7 @@ namespace textBasedGame
         {
             for (int i = 0 ;i<_objects.Count; i++)
             {
-                Console.WriteLine(_objects)
+                Console.WriteLine(_objects);
             }
         }
 
