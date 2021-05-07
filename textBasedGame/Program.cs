@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace textBasedGame
 {
@@ -16,49 +17,169 @@ namespace textBasedGame
             Place SittingArea = new Place("Sitting Area");
 
             //kitchen Objects
-            Object Sink = new Object("sink"); 
-            Object Fridge = new Object ("fridge");
-            Object Counter = new Object ("Counter");
+            Object Sink = new Object("sink", true);
+            Object Fridge = new Object("fridge", true);
+            Object Counter = new Object("Counter", true);
             Kitchen.setObject(Sink);
             Kitchen.setObject(Fridge);
             Kitchen.setObject(Counter);
-            
+
             //Storage Objects
-            Object CleaningCloset  = new Object ("Cleaning Closet");
-            Object FoodSupplies = new Object("Food Supplies");
+            Object CleaningCloset = new Object("Cleaning Closet", true);
+            Object FoodSupplies = new Object("Food Supplies", true);
             Storage.setObject(CleaningCloset);
             Storage.setObject(FoodSupplies);
 
             //Bathroom 
-            Object BSink = new Object ("Bathroom Sink");
-            Object Toilet = new Object ("toilet");
+            Object BSink = new Object("Bathroom Sink", true);
+            Object Toilet = new Object("toilet", true);
             Bathroom.setObject(Toilet);
             Bathroom.setObject(BSink);
 
             //Drive thru objects 
-            Object DTRegister = new Object("Drive thru cash register");
-            Object counter = new Object("counter");
+            Object DTRegister = new Object("Drive thru cash register", true);
+            Object counter = new Object("counter", true);
             DriveThru.setObject(DTRegister);
             DriveThru.setObject(counter);
 
             //sitting area
-            Object SodaMachine = new Object("Soda Machine");
-            Object Tables = new Object ("Tables");
+            Object SodaMachine = new Object("Soda Machine", true);
+            Object Tables = new Object("Tables", true);
             SittingArea.setObject(Tables);
             SittingArea.setObject(SodaMachine);
 
             //Regiser Object 
-            Object PickUp = new Object("Pick up");
-            Object IceCreamMachine = new Object ("Ice Cream Machine");
-            Object Register = new Object ("register");
+            Object PickUp = new Object("Pick up", true);
+            Object IceCreamMachine = new Object("Ice Cream Machine", true);
+            Object Register = new Object("register", true);
             CashRegister.setObject(Register);
             CashRegister.setObject(IceCreamMachine);
             CashRegister.setObject(PickUp);
 
-            
- 
 
-           
+            //Item name = new Item("name", true);
+            //parentObject.addItem(name);
+
+            //Kitchen------ -
+            Item Potatoes = new Item("Potatoes", true);
+            Fridge.addItem(Potatoes);
+
+            Item Meat = new Item("Meat", true);
+            Fridge.addItem(Meat);
+
+            Item Soda = new Item("Soda", true);
+            Fridge.addItem(Soda);
+
+            Item CuttingBoard = new Item("Cutting Board", true);
+            Counter.addItem(CuttingBoard);
+
+            Item Knife = new Item("Knife", true);
+            Counter.addItem(Knife);
+
+            Item Veggies = new Item("Veggies", true);
+            Counter.addItem(Veggies);
+
+
+            Item Bread = new Item("Bread", true);
+            Counter.addItem(Bread);
+
+            Item Dishes = new Item("Dishes", true);
+            Sink.addItem(Dishes);
+
+            Item Soap = new Item("Soap", true);
+            Sink.addItem(Soap);
+
+            Item Rag = new Item("Rag", true);
+            Sink.addItem(Rag);
+            //------------
+
+            //Cash Register---------- -
+
+            Item Pen = new Item("pen", true);
+            Register.addItem(Pen);
+
+            Item Pencil = new Item("pencil", true);
+            Register.addItem(Pencil);
+
+            Item Reciept = new Item("reciept", true);
+            Register.addItem(Reciept);
+
+            Item Napkins = new Item("napkins", true);
+            PickUp.addItem(Napkins);
+
+            Item Condiments = new Item("Condiments", true);
+            PickUp.addItem(Condiments);
+
+            //sitting area
+            Item Cups = new Item("Cups", true);
+
+            SodaMachine.addItem(Cups);
+
+
+            Item Straws = new Item("Straws", true);
+
+            SodaMachine.addItem(Straws);
+
+            Item PUPen = new Item("Pen", true);
+
+            Register.addItem(Pen);
+
+
+            Item PUPencil = new Item("Pencil", true);
+
+            Register.addItem(Pencil);
+
+
+            Item PUNapkins = new Item("Napkins", true);
+
+            PickUp.addItem(Napkins);
+
+
+            Item PUCondiments = new Item("Condiments", true);
+
+            PickUp.addItem(Condiments);
+
+
+            Item Screwdriver = new Item("Screwdriver", true);
+
+            IceCreamMachine.addItem(Screwdriver);
+
+
+            //Storage-------- -
+            Item Mop = new Item("mop", true);
+            CleaningCloset.addItem(Mop);
+
+            Item FSRag = new Item("rag", true); 
+            CleaningCloset.addItem(Rag);
+
+            Item ToiletPaper = new Item("Toilet Paper", true);
+            CleaningCloset.addItem(ToiletPaper);
+
+            Item Bucket = new Item("Bucket", true);
+            CleaningCloset.addItem(Bucket);
+
+            Item FSNapkins = new Item("Napkins", true);
+            FoodSupplies.addItem(Napkins);
+
+            Item FSCondiments = new Item("Condiments", true);
+            FoodSupplies.addItem(Condiments);
+
+
+            //Drive thru
+
+            Item Earpiece = new Item("Earpiece", true);
+            Register.addItem(Earpiece);
+
+            Item Tickets = new Item("Tickets", true);
+            Register.addItem(Tickets);
+
+            Item DTPen = new Item("Pen", true);
+            Counter.addItem(Pen);
+
+            Item DTPencil = new Item("Pencil", true);
+            Counter.addItem(Pencil);
+
+
 
             //Add the surrounding places to the place class
             Kitchen.setPlace(CashRegister, 'n');
@@ -91,6 +212,247 @@ namespace textBasedGame
             McMonalds[6] = SittingArea;
 
 
+
+            Item wrench = new Item("Wrench", true);
+            CleaningCloset.addItem(wrench);
+
+            Console.WriteLine("Options: " +
+                "\nmove - north, south, east, west (ex. move south) \napproach - object name (ex. approach sink)" +
+                "\ntake - item name (ex. take rag)\nplace - item name (ex. place rag)" +
+                "\npunch - object/item name (ex. punch sink)\nfix - object/item name (ex. fix sink)" +
+                "\nopen inventory\n");
+
+            //current place
+            Place curPlace = SittingArea;
+            Console.WriteLine("You are in the " + curPlace.getName() + ".");
+            if (curPlace.getObject().Count > 0)
+            {
+                Console.Write("Here you see ");
+                foreach (Object o in curPlace.getObject())
+                {
+                    Console.Write(o.name + ", ");
+                }
+
+                Console.Write(".\n");
+            }
+
+            Object curObject = null;
+
+            ArrayList inventory = new ArrayList();
+
+            //while someone enters something
+            String curStr;
+            String[] input = new String[2];
+            input[0] = "ha";
+
+            while (!input[0].ToLower().Equals("stop"))
+            {
+                Console.WriteLine();
+                curStr = Console.ReadLine();
+                input = new String[2];
+                if (curStr.Length > 0)
+                {
+                    Char cur = curStr[0];
+                    int count = 0;
+
+                    while(cur != ' ')
+                    {
+                        input[0] += cur;
+                        if (count < curStr.Length - 2)
+                        {
+                            count++;
+                            cur = curStr[count];
+                        }
+                    }
+
+                    input[1] = curStr.Substring(count + 1);
+                }
+
+                if(curStr.Contains(' '))
+                {
+                    switch(input[0].ToLower()){
+                        case "move":
+
+                            if (!(input[1].ToLower().Equals("north") || input[1].ToLower().Equals("south")
+                                || input[1].ToLower().Equals("east") || input[1].ToLower().Equals("west")))
+                            {
+                                input[1] = "A";
+                            }
+
+                            Place[] nextPlaces = curPlace.getPlace(input[1][0]);
+                            if (nextPlaces != null && nextPlaces.Length > 0) {
+                                Place nextPlace = null;
+
+                                if (nextPlaces.Length == 1)
+                                {
+                                    nextPlace = nextPlaces[0];
+                                }
+                                else
+                                {
+                                    foreach (Place p in nextPlaces)
+                                    {
+                                        Console.WriteLine(p.getName());
+                                    }
+
+                                    Console.WriteLine("Where would you like to go?");
+                                    String inName = Console.ReadLine();
+
+                                    foreach (Place p in nextPlaces)
+                                    {
+                                        if (inName.ToLower().Equals(p.getName().ToLower()))
+                                        {
+                                            nextPlace = p;
+                                        }
+                                    }
+                                }
+
+                                if (nextPlace != null)
+                                {
+                                    curPlace = nextPlace;
+                                    Console.WriteLine("You are in the " + curPlace.getName() + ".");
+                                    if (curPlace.getObject().Count > 0)
+                                    {
+                                        Console.Write("Here you see ");
+                                        foreach (Object o in curPlace.getObject())
+                                        {
+                                            Console.Write(o.name + ", ");
+                                        }
+
+                                        Console.Write(".\n");
+                                    }
+
+                                    curObject = null;
+                                }
+                            }
+                            break;
+                       case "approach":
+                            foreach (Object o in curPlace.getObject())
+                            {
+                                if (input[1].ToLower().Equals(o.name.ToLower())){
+                                    curObject = o;
+                                    Console.WriteLine("You are infront of the " + o.name + ".");
+
+                                    if(o.Fixed)
+                                    {
+                                        Console.WriteLine("It is in good condition.");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("It is broken.");
+                                    }
+                                    
+
+                                    if (curPlace.getObject().Count > 0)
+                                    {
+                                        Console.Write("At the " + o.name + " there is ");
+                                        foreach (Item i in curObject.getItem())
+                                        {
+                                            Console.Write(i.name + ", ");
+                                        }
+
+                                        Console.Write(".\n");
+                                    }
+
+                                    break;
+                                }
+                            }
+                            break;
+                        case "take":
+                            if(curObject != null)
+                            {
+                                foreach (Item i in curObject.getItem())
+                                {
+                                    if (input[1].ToLower().Equals(i.name.ToLower()))
+                                    {
+                                        inventory.Add(i);
+                                        curObject.removeItem(i);
+                                        Console.WriteLine("You have taken the " + i.name + ".");
+                                        break;
+                                    }
+                                }
+                            }
+                            break;
+                        case "place":
+                            if (curObject != null)
+                            {
+                                foreach (Item i in curObject.getItem())
+                                {
+                                    if (input[1].ToLower().Equals(i.name.ToLower()))
+                                    {
+                                        inventory.Add(i);
+                                        curObject.addItem(i);
+                                        Console.WriteLine("You have placed the " + i.name + " at the " 
+                                            + curObject.name + ".");
+                                        break;
+                                    }
+                                }
+                            }
+                            break;
+                        case "fix":
+
+                            if (inventory.Contains(wrench))
+                            {
+                                if (curObject != null)
+                                {
+                                    if (input[1].ToLower().Equals(curObject.name.ToLower()))
+                                    {
+                                        curObject.Fix();
+                                    }
+                                }
+
+                                foreach (Item i in inventory)
+                                {
+                                    if (input[1].ToLower().Equals(i.name.ToLower()))
+                                    {
+                                        i.Fix();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("You need a wrench for that");
+                            }
+
+                            break;
+
+                        case "punch":
+                            if(curObject != null)
+                            {
+                                if (input[1].ToLower().Equals(curObject.name.ToLower()))
+                                {
+                                    curObject.Punch();
+                                }
+                            }
+
+                            foreach(Item i in inventory)
+                            {
+                                if (input[1].ToLower().Equals(i.name.ToLower()))
+                                {
+                                    i.Punch();
+                                }
+                            }
+
+                            break;
+
+                        case "open":
+                            if (input[1].ToLower().Equals("inventory"))
+                            {
+                                foreach(Item i in inventory)
+                                {
+                                    Console.Write(i.name + ", ");
+                                }
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+            }
+
+
+
+            /**
             Console.WriteLine("enter \"n\", \"s\", \"e\", \"w\" characters to move through McMonalds " +
                 "OR enter \"a object name\" to approach an object");
 
@@ -154,7 +516,8 @@ namespace textBasedGame
                 Console.WriteLine("You are in " + current.getName());
                 curStr = Console.ReadLine();
                 curChar = curStr[0];
-            }
+    
+            }**/
 
         }
     }
