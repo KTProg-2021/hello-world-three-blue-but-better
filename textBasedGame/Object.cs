@@ -54,30 +54,34 @@ namespace textBasedGame
         }
 
 
-        public void Fix()
+        public String Fix()
         {
+            String output;
             if (!_fixed)
             {
-                Console.WriteLine("You have fixed the " + _name + ".");
+               output = "You have fixed the " + _name + ".";
             }
             else
             {
-                Console.WriteLine("The " + _name + " does not need fixing.");
+                output = "The " + _name + " does not need fixing.";
             }
             _fixed = true;
+            return output;
         }
 
-        public void Punch()
+        public String Punch()
         {
+            String output;
             if (_fixed)
             {
-                Console.WriteLine("Great job.  You have broken the " + _name + ".");
+                output = "Great job.  You have broken the " + _name + ".";
             }
             else
             {
-                Console.WriteLine("The " + _name + " is already broken. You break it some more.");
+                output = "The " + _name + " is already broken. You break it some more.";
             }
             _fixed = false;
+            return output;
         }
 
 

@@ -224,17 +224,7 @@ namespace textBasedGame
 
             //current place
             Place curPlace = SittingArea;
-            Console.WriteLine("You are in the " + curPlace.getName() + ".");
-            if (curPlace.getObject().Count > 0)
-            {
-                Console.Write("Here you see ");
-                foreach (Object o in curPlace.getObject())
-                {
-                    Console.Write(o.name + ", ");
-                }
-
-                Console.Write(".\n");
-            }
+            Console.WriteLine(enterPlace(curPlace));
 
             Object curObject = null;
 
@@ -244,14 +234,17 @@ namespace textBasedGame
             String curStr;
             String[] input = new String[2];
             input[0] = "ha";
+            String output = "";
 
             while (!input[0].ToLower().Equals("stop"))
             {
-                Console.WriteLine();
+                output = "";
+                //Console.WriteLine();
                 curStr = Console.ReadLine();
                 input = new String[2];
                 if (curStr.Length > 0)
                 {
+                    //input[0] = ""; input[1] = "";
                     Char cur = curStr[0];
                     int count = 0;
 
@@ -263,14 +256,29 @@ namespace textBasedGame
                             count++;
                             cur = curStr[count];
                         }
+                        else
+                        {
+                            break;
+                        }
                     }
+
 
                     input[1] = curStr.Substring(count + 1);
                 }
-
-                if(curStr.Contains(' '))
+                //Console.WriteLine(input[0]);
+                if (curStr.ToLower().Contains("help"))
+                {
+                    output += "Options: " +
+                    "\nmove - north, south, east, west (ex. move south) \napproach - object name (ex. approach sink)" +
+                    "\ntake - item name (ex. take rag)\nplace - item name (ex. place rag)" +
+                    "\npunch - object/item name (ex. punch sink)\nfix - object/item name (ex. fix sink)" +
+                    "\nopen inventory\n";
+                }
+                else if(curStr.Contains(' '))
                 {
                     switch(input[0].ToLower()){
+
+                        
                         case "move":
 
                             if (!(input[1].ToLower().Equals("north") || input[1].ToLower().Equals("south")
@@ -291,7 +299,7 @@ namespace textBasedGame
                                 {
                                     foreach (Place p in nextPlaces)
                                     {
-                                        Console.WriteLine(p.getName());
+                                        output += p.getName();
                                     }
 
                                     Console.WriteLine("Where would you like to go?");
@@ -309,20 +317,16 @@ namespace textBasedGame
                                 if (nextPlace != null)
                                 {
                                     curPlace = nextPlace;
-                                    Console.WriteLine("You are in the " + curPlace.getName() + ".");
-                                    if (curPlace.getObject().Count > 0)
-                                    {
-                                        Console.Write("Here you see ");
-                                        foreach (Object o in curPlace.getObject())
-                                        {
-                                            Console.Write(o.name + ", ");
-                                        }
 
-                                        Console.Write(".\n");
-                                    }
+                                    output += enterPlace(curPlace);
 
                                     curObject = null;
                                 }
+                            }
+
+                            if(output.Length < 1)
+                            {
+                                output += "You can't move there.\n";
                             }
                             break;
                        case "approach":
@@ -330,27 +334,33 @@ namespace textBasedGame
                             {
                                 if (input[1].ToLower().Equals(o.name.ToLower())){
                                     curObject = o;
-                                    Console.WriteLine("You are infront of the " + o.name + ".");
+                                    output += "You are infront of the " + o.name + ".\n";
 
                                     if(o.Fixed)
                                     {
-                                        Console.WriteLine("It is in good condition.");
+                                        output += "It is in good condition.\n";
                                     }
                                     else
                                     {
-                                        Console.WriteLine("It is broken.");
+                                        output += "It is broken.\n";
                                     }
                                     
 
                                     if (curPlace.getObject().Count > 0)
                                     {
-                                        Console.Write("At the " + o.name + " there is ");
+                                        output += "At the " + o.name + " there is ";
+                                        String curOutput = "";
                                         foreach (Item i in curObject.getItem())
                                         {
-                                            Console.Write(i.name + ", ");
+                                            curOutput += i.name + ", ";
+                                        }
+                                        output += curOutput;
+                                        if(curOutput.Length == 0)
+                                        {
+                                            output += "nothing";
                                         }
 
-                                        Console.Write(".\n");
+                                        output += ".\n";
                                     }
 
                                     break;
@@ -366,7 +376,7 @@ namespace textBasedGame
                                     {
                                         inventory.Add(i);
                                         curObject.removeItem(i);
-                                        Console.WriteLine("You have taken the " + i.name + ".");
+                                        output += "You have taken the " + i.name + ".\n";
                                         break;
                                     }
                                 }
@@ -381,8 +391,8 @@ namespace textBasedGame
                                     {
                                         inventory.Add(i);
                                         curObject.addItem(i);
-                                        Console.WriteLine("You have placed the " + i.name + " at the " 
-                                            + curObject.name + ".");
+                                        output += "You have placed the " + i.name + " at the " 
+                                            + curObject.name + ".\n";
                                         break;
                                     }
                                 }
@@ -396,7 +406,7 @@ namespace textBasedGame
                                 {
                                     if (input[1].ToLower().Equals(curObject.name.ToLower()))
                                     {
-                                        curObject.Fix();
+                                        output += curObject.Fix() + "\n";
                                     }
                                 }
 
@@ -404,13 +414,13 @@ namespace textBasedGame
                                 {
                                     if (input[1].ToLower().Equals(i.name.ToLower()))
                                     {
-                                        i.Fix();
+                                        output += i.Fix() + "\n";
                                     }
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("You need a wrench for that");
+                                output += "You need a wrench for that.\n";
                             }
 
                             break;
@@ -420,7 +430,7 @@ namespace textBasedGame
                             {
                                 if (input[1].ToLower().Equals(curObject.name.ToLower()))
                                 {
-                                    curObject.Punch();
+                                    output += curObject.Punch() + "\n";
                                 }
                             }
 
@@ -428,7 +438,7 @@ namespace textBasedGame
                             {
                                 if (input[1].ToLower().Equals(i.name.ToLower()))
                                 {
-                                    i.Punch();
+                                    output += i.Punch() + "\n";
                                 }
                             }
 
@@ -439,14 +449,26 @@ namespace textBasedGame
                             {
                                 foreach(Item i in inventory)
                                 {
-                                    Console.Write(i.name + ", ");
+                                    output += i.name + ", ";
                                 }
                             }
                             break;
                         default:
                             break;
                     }
+                    if (output.Length < 1)
+                    {
+                        Console.WriteLine("Your input is bad and we hate you.");
+                    }
+                    else
+                    {
+                        Console.WriteLine(output);
+                    }
 
+                }
+                else
+                {
+                    Console.WriteLine("Your input is super bad and we are ok with your existance");
                 }
             }
 
@@ -519,6 +541,68 @@ namespace textBasedGame
     
             }**/
 
+        }
+
+        public static String enterPlace(Place curPlace)
+        {
+            String output = "You are in the " + curPlace.getName() + ".\n";
+            if (curPlace.getObject().Count > 0)
+            {
+                output += "Here you see ";
+                foreach (Object o in curPlace.getObject())
+                {
+                    output += o.name + ", ";
+                }
+
+                output += ".\n";
+            }
+            else
+            {
+                output += "There is nothing here to approach.\n";
+            }
+
+            output += "You can go: ";
+            String curOutput = "";
+            foreach (Place p in curPlace.getPlace('n'))
+            {
+                curOutput += p.getName() + ",";
+            }
+            if(curOutput.Length > 0)
+            {
+                output += "North: " + curOutput + " ";
+            }
+
+            curOutput = "";
+            foreach (Place p in curPlace.getPlace('e'))
+            {
+                curOutput += p.getName() + ",";
+            }
+            if (curOutput.Length > 0)
+            {
+                output += "East: " + curOutput + " ";
+            }
+
+            curOutput = "";
+            foreach (Place p in curPlace.getPlace('s'))
+            {
+                curOutput += p.getName() + ",";
+            }
+            if (curOutput.Length > 0)
+            {
+                output += "South: " + curOutput + " ";
+            }
+
+            curOutput = "";
+            foreach (Place p in curPlace.getPlace('w'))
+            {
+                curOutput += p.getName() + ",";
+            }
+            if (curOutput.Length > 0)
+            {
+                output += "West: " + curOutput + " ";
+            }
+
+            return output + "\n";
         }
     }
 }
