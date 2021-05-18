@@ -7,12 +7,13 @@ namespace textBasedGame
     class Item
     {
         //Constructor
-        private String _name;
+        private String _name, _takeText;
         private Boolean _fixed;
         public Item(String name, Boolean inFixed)
         {
             _name = name;
             _fixed = inFixed;
+            _takeText = "";
         }
 
         //Get/set methods
@@ -29,6 +30,17 @@ namespace textBasedGame
             }
         }
 
+        public String TakeText
+        {
+            get
+            {
+                return _takeText;
+            }
+            set
+            {
+                _takeText = value + "\n";
+            }
+        }
 
         public Boolean Fixed
         {

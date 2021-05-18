@@ -9,175 +9,180 @@ namespace textBasedGame
         {
             //Construct the 7 "Places"
             Place Kitchen = new Place("Kitchen");
+            Kitchen.EnterText = "Description of place";
             Place DriveThru = new Place("Drive Thru");
+            DriveThru.EnterText = "Description of place";
             Place CashRegister = new Place("Cash Register");
+            CashRegister.EnterText = "Description of place";
             Place Hallway = new Place("Hallway");
+            Hallway.EnterText = "Description of place";
             Place Bathroom = new Place("Bathroom");
+            Bathroom.EnterText = "Description of place";
             Place Storage = new Place("Storage");
+            Storage.EnterText = "Description of place";
             Place SittingArea = new Place("Sitting Area");
+            SittingArea.EnterText = "Description of place";
 
-            //kitchen Objects
-            Object Sink = new Object("sink", true);
-            Object Fridge = new Object("fridge", true);
-            Object Counter = new Object("Counter", true);
+            //Kitchen Objects
+            Object Sink = new Object("Sink", true);
             Kitchen.setObject(Sink);
+            Sink.ApproachText = "Description of thing";
+
+            Object Fridge = new Object("Fridge", true);
             Kitchen.setObject(Fridge);
+            Fridge.ApproachText = "Description of thing";
+
+            Object Counter = new Object("Counter", true);
             Kitchen.setObject(Counter);
+            Counter.ApproachText = "Description of thing";
 
             //Storage Objects
             Object CleaningCloset = new Object("Cleaning Closet", true);
-            Object FoodSupplies = new Object("Food Supplies", true);
             Storage.setObject(CleaningCloset);
+            CleaningCloset.ApproachText = "Description of thing";
+
+            Object FoodSupplies = new Object("Food Supplies", true);
             Storage.setObject(FoodSupplies);
+            FoodSupplies.ApproachText = "Description of thing";
 
             //Bathroom 
-            Object BSink = new Object("Bathroom Sink", true);
-            Object Toilet = new Object("toilet", true);
-            Bathroom.setObject(Toilet);
+            Object BSink = new Object("Sink", true);
             Bathroom.setObject(BSink);
+            BSink.ApproachText = "Description of thing";
+
+            Object Toilet = new Object("Toilet", true);
+            Bathroom.setObject(Toilet);
+            Toilet.ApproachText = "Description of thing";
 
             //Drive thru objects 
-            Object DTRegister = new Object("Drive thru cash register", true);
-            Object counter = new Object("counter", true);
+            Object DTRegister = new Object("Drive-Thru Cash Register", true);
             DriveThru.setObject(DTRegister);
-            DriveThru.setObject(counter);
+            DTRegister.ApproachText = "Description of thing";
+
+            Object DTCounter = new Object("Counter", true);
+            DriveThru.setObject(DTCounter);
+            DTCounter.ApproachText = "Description of thing";
 
             //sitting area
             Object SodaMachine = new Object("Soda Machine", true);
+            SittingArea.setObject(SodaMachine);
+            SodaMachine.ApproachText = "Description of thing";
+
             Object Tables = new Object("Tables", true);
             SittingArea.setObject(Tables);
-            SittingArea.setObject(SodaMachine);
+            Tables.ApproachText = "Description of thing";
 
             //Regiser Object 
             Object PickUp = new Object("Pick up", true);
-            Object IceCreamMachine = new Object("Ice Cream Machine", true);
-            Object Register = new Object("register", true);
-            CashRegister.setObject(Register);
-            CashRegister.setObject(IceCreamMachine);
             CashRegister.setObject(PickUp);
+            PickUp.ApproachText = "Description of thing";
 
+            Object IceCreamMachine = new Object("Ice Cream Machine", true);
+            CashRegister.setObject(IceCreamMachine);
+            IceCreamMachine.ApproachText = "Description of thing";
+
+            Object Register = new Object("Register", true);
+            CashRegister.setObject(Register);
+            Register.ApproachText = "Description of thing";
+
+            //Hallway Objects
+            Object CreepyMural = new Object("Creepy Mural", false);
+            Hallway.setObject(CreepyMural);
+            CreepyMural.ApproachText = "The mural is creepy, and you very much want to leave it.";
 
             //Item name = new Item("name", true);
             //parentObject.addItem(name);
 
             //Kitchen------ -
-            Item Potatoes = new Item("Potatoes", true);
-            Fridge.addItem(Potatoes);
+            Item Fridge_Potatoes = new Item("Potatoes", true);
+            Fridge.addItem(Fridge_Potatoes);
 
-            Item Meat = new Item("Meat", true);
-            Fridge.addItem(Meat);
+            Item Fridge_Meat = new Item("Meat", true);
+            Fridge.addItem(Fridge_Meat);
 
-            Item Soda = new Item("Soda", true);
-            Fridge.addItem(Soda);
+            Item Fridge_Soda = new Item("Soda", true);
+            Fridge.addItem(Fridge_Soda);
 
-            Item CuttingBoard = new Item("Cutting Board", true);
-            Counter.addItem(CuttingBoard);
+            Item Counter_CuttingBoard = new Item("Cutting Board", true);
+            Counter.addItem(Counter_CuttingBoard);
 
-            Item Knife = new Item("Knife", true);
-            Counter.addItem(Knife);
+            Item Counter_Knife = new Item("Knife", true);
+            Counter.addItem(Counter_Knife);
 
-            Item Veggies = new Item("Veggies", true);
-            Counter.addItem(Veggies);
+            Item Counter_Veggies = new Item("Veggies", true);
+            Counter.addItem(Counter_Veggies);
 
+            Item Counter_Bread = new Item("Bread", true);
+            Counter.addItem(Counter_Bread);
 
-            Item Bread = new Item("Bread", true);
-            Counter.addItem(Bread);
+            Item Sink_Dishes = new Item("Dishes", true);
+            Sink.addItem(Sink_Dishes);
 
-            Item Dishes = new Item("Dishes", true);
-            Sink.addItem(Dishes);
+            Item Sink_Soap = new Item("Soap", true);
+            Sink.addItem(Sink_Soap);
 
-            Item Soap = new Item("Soap", true);
-            Sink.addItem(Soap);
-
-            Item Rag = new Item("Rag", true);
-            Sink.addItem(Rag);
-            //------------
+            Item Sink_Rag = new Item("Rag", true);
+            Sink.addItem(Sink_Rag);
 
             //Cash Register---------- -
+            Item Register_Pen = new Item("Pen", true);
+            Register.addItem(Register_Pen);
 
-            Item Pen = new Item("pen", true);
-            Register.addItem(Pen);
+            Item Register_Pencil = new Item("Pencil", true);
+            Register.addItem(Register_Pencil);
 
-            Item Pencil = new Item("pencil", true);
-            Register.addItem(Pencil);
+            Item Register_Reciept = new Item("Reciept", true);
+            Register.addItem(Register_Reciept);
 
-            Item Reciept = new Item("reciept", true);
-            Register.addItem(Reciept);
+            Item PickUp_Napkins = new Item("Napkins", true);
+            PickUp.addItem(PickUp_Napkins);
 
-            Item Napkins = new Item("napkins", true);
-            PickUp.addItem(Napkins);
+            Item PickUp_Condiments = new Item("Condiments", true);
+            PickUp.addItem(PickUp_Condiments);
 
-            Item Condiments = new Item("Condiments", true);
-            PickUp.addItem(Condiments);
+            Item IceCreamMachine_Screwdriver = new Item("Screwdriver", true);
+            IceCreamMachine.addItem(IceCreamMachine_Screwdriver);
 
-            //sitting area
-            Item Cups = new Item("Cups", true);
+            //Sitting area
+            Item SodaMachine_Cups = new Item("Cups", true);
+            SodaMachine.addItem(SodaMachine_Cups);
 
-            SodaMachine.addItem(Cups);
+            Item SodaMachine_Straws = new Item("Straws", true);
+            SodaMachine.addItem(SodaMachine_Straws);
 
-
-            Item Straws = new Item("Straws", true);
-
-            SodaMachine.addItem(Straws);
-
-            Item PUPen = new Item("Pen", true);
-
-            Register.addItem(Pen);
-
-
-            Item PUPencil = new Item("Pencil", true);
-
-            Register.addItem(Pencil);
-
-
-            Item PUNapkins = new Item("Napkins", true);
-
-            PickUp.addItem(Napkins);
-
-
-            Item PUCondiments = new Item("Condiments", true);
-
-            PickUp.addItem(Condiments);
-
-
-            Item Screwdriver = new Item("Screwdriver", true);
-
-            IceCreamMachine.addItem(Screwdriver);
-
-
+            
             //Storage-------- -
-            Item Mop = new Item("mop", true);
-            CleaningCloset.addItem(Mop);
+            Item CleaningCloset_Mop = new Item("Mop", true);
+            CleaningCloset.addItem(CleaningCloset_Mop);
 
-            Item FSRag = new Item("rag", true); 
-            CleaningCloset.addItem(Rag);
+            Item CleaningCloset_Rag = new Item("Rag", true); 
+            CleaningCloset.addItem(CleaningCloset_Rag);
 
-            Item ToiletPaper = new Item("Toilet Paper", true);
-            CleaningCloset.addItem(ToiletPaper);
+            Item CleaningCloset_ToiletPaper = new Item("Toilet Paper", true);
+            CleaningCloset.addItem(CleaningCloset_ToiletPaper);
 
-            Item Bucket = new Item("Bucket", true);
-            CleaningCloset.addItem(Bucket);
+            Item CleaningCloset_Bucket = new Item("Bucket", true);
+            CleaningCloset.addItem(CleaningCloset_Bucket);
 
-            Item FSNapkins = new Item("Napkins", true);
-            FoodSupplies.addItem(Napkins);
+            Item FoodSupplies_Napkins = new Item("Napkins", true);
+            FoodSupplies.addItem(FoodSupplies_Napkins);
 
-            Item FSCondiments = new Item("Condiments", true);
-            FoodSupplies.addItem(Condiments);
+            Item FoodSupplies_Condiments = new Item("Condiments", true);
+            FoodSupplies.addItem(FoodSupplies_Condiments);
 
 
             //Drive thru
+            Item DTRegister_Earpiece = new Item("Earpiece", true);
+            DTRegister.addItem(DTRegister_Earpiece);
 
-            Item Earpiece = new Item("Earpiece", true);
-            Register.addItem(Earpiece);
+            Item DTRegister_Tickets = new Item("Tickets", true);
+            DTRegister.addItem(DTRegister_Tickets);
 
-            Item Tickets = new Item("Tickets", true);
-            Register.addItem(Tickets);
+            Item DTCounter_Pen = new Item("Pen", true);
+            DTCounter.addItem(DTCounter_Pen);
 
-            Item DTPen = new Item("Pen", true);
-            Counter.addItem(Pen);
-
-            Item DTPencil = new Item("Pencil", true);
-            Counter.addItem(Pencil);
+            Item DTCounter_Pencil = new Item("Pencil", true);
+            DTCounter.addItem(DTCounter_Pencil);
 
 
 
@@ -212,10 +217,12 @@ namespace textBasedGame
             McMonalds[6] = SittingArea;
 
 
+            int wrenchVengance = 0;
+            Item CleaningCloset_Wrench = new Item("Wrench", true);
+            CleaningCloset.addItem(CleaningCloset_Wrench);
+            CleaningCloset_Wrench.TakeText = "The mystical wrench can fix all things.";
 
-            Item wrench = new Item("Wrench", true);
-            CleaningCloset.addItem(wrench);
-
+            //Print out options
             Console.WriteLine("Options: " +
                 "\nmove - north, south, east, west (ex. move south) \napproach - object name (ex. approach sink)" +
                 "\ntake - item name (ex. take rag)\nplace - item name (ex. place rag)" +
@@ -233,18 +240,25 @@ namespace textBasedGame
             //while someone enters something
             String curStr;
             String[] input = new String[2];
-            input[0] = "ha";
+            input[0] = "-";
             String output = "";
 
             while (!input[0].ToLower().Equals("stop"))
             {
                 output = "";
                 //Console.WriteLine();
+
+                //Splits the input into two parts
+                //input[0] is everything before the first space
+                //input[1] is everything after the first space
+                //for example "approach sitting area" would be split like
+                //input[0] = approach
+                //input[1] = sitting area
                 curStr = Console.ReadLine();
                 input = new String[2];
                 if (curStr.Length > 0)
                 {
-                    //input[0] = ""; input[1] = "";
+                    input[0] = ""; input[1] = "";
                     Char cur = curStr[0];
                     int count = 0;
 
@@ -261,11 +275,17 @@ namespace textBasedGame
                             break;
                         }
                     }
-
-
                     input[1] = curStr.Substring(count + 1);
                 }
+
+                //Catch Error - nothing entered
+                if(curStr.Length < 1)
+                {
+                    input[0] = "-";
+                }
+
                 //Console.WriteLine(input[0]);
+                //Help case
                 if (curStr.ToLower().Contains("help"))
                 {
                     output += "Options: " +
@@ -274,19 +294,31 @@ namespace textBasedGame
                     "\npunch - object/item name (ex. punch sink)\nfix - object/item name (ex. fix sink)" +
                     "\nopen inventory\n";
                 }
+                else if (curStr.ToLower().Contains("hint"))
+                {
+                    //TO DO - HINTS CODE
+                }
+                //If the string contains a space (Two or more words)
                 else if(curStr.Contains(' '))
                 {
                     switch(input[0].ToLower()){
+                        case "leave":
+                            //TO DO - LEAVE CODE
+                            //Write code that will tell the user they have left the object
+                            //and then set the "curObject" varible to nothing
+                            break;
 
-                        
+                        //if the first word is move
                         case "move":
 
+                            //This piece of code just makes it so "spoon" isnt recognised as south
                             if (!(input[1].ToLower().Equals("north") || input[1].ToLower().Equals("south")
                                 || input[1].ToLower().Equals("east") || input[1].ToLower().Equals("west")))
                             {
                                 input[1] = "A";
                             }
 
+                            //Checks if the next place is a place you can go
                             Place[] nextPlaces = curPlace.getPlace(input[1][0]);
                             if (nextPlaces != null && nextPlaces.Length > 0) {
                                 Place nextPlace = null;
@@ -314,6 +346,8 @@ namespace textBasedGame
                                     }
                                 }
 
+                                //If the next place is somewhere you can go
+                                //Make the current place this place
                                 if (nextPlace != null)
                                 {
                                     curPlace = nextPlace;
@@ -324,17 +358,22 @@ namespace textBasedGame
                                 }
                             }
 
+                            //If the input isnt good
                             if(output.Length < 1)
                             {
                                 output += "You can't move there.\n";
                             }
                             break;
+                       //approach code
                        case "approach":
+                            //Checks if the object is in the current place
                             foreach (Object o in curPlace.getObject())
                             {
                                 if (input[1].ToLower().Equals(o.name.ToLower())){
                                     curObject = o;
+                                    //Prints out neccessary information
                                     output += "You are infront of the " + o.name + ".\n";
+                                    output += curObject.ApproachText;
 
                                     if(o.Fixed)
                                     {
@@ -345,7 +384,7 @@ namespace textBasedGame
                                         output += "It is broken.\n";
                                     }
                                     
-
+                                    //Prints out items
                                     if (curPlace.getObject().Count > 0)
                                     {
                                         output += "At the " + o.name + " there is ";
@@ -357,31 +396,57 @@ namespace textBasedGame
                                         output += curOutput;
                                         if(curOutput.Length == 0)
                                         {
-                                            output += "nothing";
+                                            output += "nothing you can take";
+                                        }
+                                        else
+                                        {
+                                            output += "that you can take";
                                         }
 
                                         output += ".\n";
                                     }
-
                                     break;
                                 }
                             }
+                            //If input isnt good
+                            if (output.Length < 1)
+                            {
+                                output += "You can't approach that (your spelling must be correct).\n";
+                            }
                             break;
+                        //Take code
                         case "take":
+                            //Checks if the item is at the object you are currently at
                             if(curObject != null)
                             {
                                 foreach (Item i in curObject.getItem())
                                 {
                                     if (input[1].ToLower().Equals(i.name.ToLower()))
                                     {
+                                        //Adds it to inventory, removes it from the current object
                                         inventory.Add(i);
                                         curObject.removeItem(i);
                                         output += "You have taken the " + i.name + ".\n";
+                                        output += i.TakeText;
+                                        if (i.Fixed)
+                                        {
+                                            output += "It is in good condition.\n";
+                                        }
+                                        else
+                                        {
+                                            output += "It is broken.\n";
+                                        }
                                         break;
                                     }
                                 }
                             }
+                            //If the input isnt good
+                            if (output.Length < 1)
+                            {
+                                output += "That item is not here to take (your spelling must be correct).\n";
+                            }
                             break;
+                        //Place code - opposite of take
                         case "place":
                             if (curObject != null)
                             {
@@ -397,10 +462,15 @@ namespace textBasedGame
                                     }
                                 }
                             }
+                            if (output.Length < 1)
+                            {
+                                output += "That item is not in your inventory (your spelling must be correct).\n";
+                            }
                             break;
+                        //Fix code
                         case "fix":
 
-                            if (inventory.Contains(wrench))
+                            if (inventory.Contains(CleaningCloset_Wrench))
                             {
                                 if (curObject != null)
                                 {
@@ -420,11 +490,16 @@ namespace textBasedGame
                             }
                             else
                             {
-                                output += "You need a wrench for that.\n";
+                                output += "You need a wrench for that (in the cleaning supplies in the storage closet).\n";
+                            }
+
+                            if (output.Length < 1)
+                            {
+                                output += "That item is not here to fix (your spelling must be correct).\n";
                             }
 
                             break;
-
+                        //Punch code
                         case "punch":
                             if(curObject != null)
                             {
@@ -438,12 +513,38 @@ namespace textBasedGame
                             {
                                 if (input[1].ToLower().Equals(i.name.ToLower()))
                                 {
-                                    output += i.Punch() + "\n";
+                                    if (input[1].ToLower().Equals("wrench"))
+                                    {
+                                        //please ignore this
+                                        if (wrenchVengance == 3)
+                                        {
+                                            output += "You punch the wrench for a third time, and it begins to grow hot in your hand";
+                                        }
+                                        else if (wrenchVengance > 3)
+                                        {
+                                            output += "The wrench explodes, you die. This was the final boss all along. Great job dying to a wrench.";
+                                            input[0] = "stop";
+                                        }
+                                        else
+                                        {
+                                            output += "You punch the wrench, but you cannot manage to break it.";
+                                        }
+                                        wrenchVengance++;
+                                    }
+                                    else 
+                                    {
+                                        output += i.Punch() + "\n"; 
+                                    }
                                 }
                             }
 
-                            break;
+                            if (output.Length < 1)
+                            {
+                                output += "The thing you are trying to punch is not around you (your spelling must be correct).\n";
+                            }
 
+                            break;
+                        //Open inventory - prints out inventory
                         case "open":
                             if (input[1].ToLower().Equals("inventory"))
                             {
@@ -472,7 +573,7 @@ namespace textBasedGame
                 }
             }
 
-
+            Console.WriteLine("Thank you for playing!");
 
             /**
             Console.WriteLine("enter \"n\", \"s\", \"e\", \"w\" characters to move through McMonalds " +
@@ -546,6 +647,7 @@ namespace textBasedGame
         public static String enterPlace(Place curPlace)
         {
             String output = "You are in the " + curPlace.getName() + ".\n";
+            output += curPlace.EnterText;
             if (curPlace.getObject().Count > 0)
             {
                 output += "Here you see ";

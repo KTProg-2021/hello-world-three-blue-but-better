@@ -10,7 +10,7 @@ namespace textBasedGame
         //Array of items will need to be added
 
         //Constructor
-        private String _name;
+        private String _name, _approachText;
         private Boolean _fixed;
         private ArrayList _items;
         public Object(String name, Boolean inFixed)
@@ -18,6 +18,7 @@ namespace textBasedGame
             _name = name;
             _fixed = inFixed;
             _items = new ArrayList();
+            _approachText = "";
         }
 
         public void addItem(Item value)
@@ -33,6 +34,18 @@ namespace textBasedGame
         public void removeItem(Item value)
         {
             _items.Remove(value);
+        }
+
+        public String ApproachText
+        {
+            get
+            {
+                return _approachText;
+            }
+            set
+            {
+                _approachText = value + "\n";
+            }
         }
 
         public Boolean Fixed

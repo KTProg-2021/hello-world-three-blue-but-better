@@ -9,7 +9,7 @@ namespace textBasedGame
     {
         private Place[] _north, _south, _east, _west;
         private ArrayList _objects;
-        private string _name;
+        private string _name, _enterText;
         
         //Constructor
         public Place(string name)
@@ -20,6 +20,19 @@ namespace textBasedGame
             _west = new Place[0];
             _objects = new ArrayList();
             _name = name;
+            _enterText = "";
+        }
+
+        public String EnterText
+        {
+            get
+            {
+                return _enterText;
+            }
+            set
+            {
+                _enterText = value + "\n";
+            }
         }
 
         //TO DO
