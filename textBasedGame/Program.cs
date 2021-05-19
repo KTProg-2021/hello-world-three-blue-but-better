@@ -150,12 +150,12 @@ namespace textBasedGame
             Item SodaMachine_Straws = new Item("Straws", true);
             SodaMachine.addItem(SodaMachine_Straws);
 
-            
+
             //Storage-------- -
             Item CleaningCloset_Mop = new Item("Mop", true);
             CleaningCloset.addItem(CleaningCloset_Mop);
 
-            Item CleaningCloset_Rag = new Item("Rag", true); 
+            Item CleaningCloset_Rag = new Item("Rag", true);
             CleaningCloset.addItem(CleaningCloset_Rag);
 
             Item CleaningCloset_ToiletPaper = new Item("Toilet Paper", true);
@@ -262,7 +262,7 @@ namespace textBasedGame
                     Char cur = curStr[0];
                     int count = 0;
 
-                    while(cur != ' ')
+                    while (cur != ' ')
                     {
                         input[0] += cur;
                         if (count < curStr.Length - 2)
@@ -279,7 +279,7 @@ namespace textBasedGame
                 }
 
                 //Catch Error - nothing entered
-                if(curStr.Length < 1)
+                if (curStr.Length < 1)
                 {
                     input[0] = "-";
                 }
@@ -293,20 +293,105 @@ namespace textBasedGame
                     "\ntake - item name (ex. take rag)\nplace - item name (ex. place rag)" +
                     "\npunch - object/item name (ex. punch sink)\nfix - object/item name (ex. fix sink)" +
                     "\nopen inventory\n";
+                    Console.WriteLine(output);
                 }
                 else if (curStr.ToLower().Contains("hint"))
                 {
-                    //TO DO - HINTS CODE
+                    //TO DO - HINTS 
+                    String output1 = "You are in the " + curPlace.getName() + ".\n";
+
+                    if (curPlace.getObject().Count > 0)
+                    {
+                        output1 += "Here you can 'approach' ";
+                        foreach (Object o in curPlace.getObject())
+                        {
+                            output1 += o.name + ", ";
+                        }
+
+                        output1 += ".\n";
+                    }
+                    else
+                    {
+                        output1 += "There is nothing here to approach.\n";
+                    }
+
+                    output1 += "You can 'move': ";
+                    String curOutput = "";
+                    foreach (Place p in curPlace.getPlace('n'))
+                    {
+                        curOutput += p.getName() + ", ";
+                    }
+                    if (curOutput.Length > 0)
+                    {
+                        output1 += "North: " + curOutput + " ";
+                    }
+
+                    curOutput = "";
+                    foreach (Place p in curPlace.getPlace('e'))
+                    {
+                        curOutput += p.getName() + ", ";
+                    }
+                    if (curOutput.Length > 0)
+                    {
+                        output1 += "East: " + curOutput + " ";
+                    }
+
+                    curOutput = "";
+                    foreach (Place p in curPlace.getPlace('s'))
+                    {
+                        curOutput += p.getName() + ", ";
+                    }
+                    if (curOutput.Length > 0)
+                    {
+                        output1 += "South: " + curOutput + " ";
+                    }
+
+                    curOutput = "";
+                    foreach (Place p in curPlace.getPlace('w'))
+                    {
+                        curOutput += p.getName() + ", ";
+                    }
+                    if (curOutput.Length > 0)
+                    {
+                        output1 += "West: " + curOutput + " ";
+                    }
+
+                    foreach(Item i in curObject.getItem())
+                    {
+
+                    }
+
+                    Console.WriteLine(output1);
                 }
-                //If the string contains a space (Two or more words)
-                else if(curStr.Contains(' '))
+                else if (curStr.ToLower().Contains("leave"))
                 {
-                    switch(input[0].ToLower()){
-                        case "leave":
-                            //TO DO - LEAVE CODE
-                            //Write code that will tell the user they have left the object
-                            //and then set the "curObject" varible to nothing
-                            break;
+                    //TO DO - LEAVE CODE
+                    //Write code that will tell the user they have left the object
+                    //and then set the "curObject" varible to nothing
+                    if (curObject!= null)
+                    {
+                        curObject = null;
+                        Console.WriteLine("you have left the object");
+                    }
+                    else
+                    {
+                        Console.WriteLine("you were not at an object");
+                    }
+                    
+                }
+            
+                //If the string contains a space (Two or more words)
+                else if (curStr.Contains(' '))
+                {
+                    switch (input[0].ToLower())
+                    {
+                        //case "leave":
+                        //    //TO DO - LEAVE CODE
+                        //    //Write code that will tell the user they have left the object
+                        //    //and then set the "curObject" varible to nothing
+                        //    curObject = null;
+                        //    Console.WriteLine("you have left the object");
+                        //    break;
 
                         //if the first word is move
                         case "move":
@@ -320,7 +405,8 @@ namespace textBasedGame
 
                             //Checks if the next place is a place you can go
                             Place[] nextPlaces = curPlace.getPlace(input[1][0]);
-                            if (nextPlaces != null && nextPlaces.Length > 0) {
+                            if (nextPlaces != null && nextPlaces.Length > 0)
+                            {
                                 Place nextPlace = null;
 
                                 if (nextPlaces.Length == 1)
@@ -331,10 +417,10 @@ namespace textBasedGame
                                 {
                                     foreach (Place p in nextPlaces)
                                     {
-                                        output += p.getName();
+                                        Console.Write(p.getName() + ", ");
                                     }
 
-                                    Console.WriteLine("Where would you like to go?");
+                                    Console.WriteLine("\nWhere would you like to go?");
                                     String inName = Console.ReadLine();
 
                                     foreach (Place p in nextPlaces)
@@ -359,23 +445,24 @@ namespace textBasedGame
                             }
 
                             //If the input isnt good
-                            if(output.Length < 1)
+                            if (output.Length < 1)
                             {
                                 output += "You can't move there.\n";
                             }
                             break;
-                       //approach code
-                       case "approach":
+                        //approach code
+                        case "approach":
                             //Checks if the object is in the current place
                             foreach (Object o in curPlace.getObject())
                             {
-                                if (input[1].ToLower().Equals(o.name.ToLower())){
+                                if (input[1].ToLower().Equals(o.name.ToLower()))
+                                {
                                     curObject = o;
                                     //Prints out neccessary information
                                     output += "You are infront of the " + o.name + ".\n";
                                     output += curObject.ApproachText;
 
-                                    if(o.Fixed)
+                                    if (o.Fixed)
                                     {
                                         output += "It is in good condition.\n";
                                     }
@@ -383,7 +470,7 @@ namespace textBasedGame
                                     {
                                         output += "It is broken.\n";
                                     }
-                                    
+
                                     //Prints out items
                                     if (curPlace.getObject().Count > 0)
                                     {
@@ -394,7 +481,7 @@ namespace textBasedGame
                                             curOutput += i.name + ", ";
                                         }
                                         output += curOutput;
-                                        if(curOutput.Length == 0)
+                                        if (curOutput.Length == 0)
                                         {
                                             output += "nothing you can take";
                                         }
@@ -417,7 +504,7 @@ namespace textBasedGame
                         //Take code
                         case "take":
                             //Checks if the item is at the object you are currently at
-                            if(curObject != null)
+                            if (curObject != null)
                             {
                                 foreach (Item i in curObject.getItem())
                                 {
@@ -450,13 +537,13 @@ namespace textBasedGame
                         case "place":
                             if (curObject != null)
                             {
-                                foreach (Item i in curObject.getItem())
+                                foreach (Item i in inventory)
                                 {
                                     if (input[1].ToLower().Equals(i.name.ToLower()))
                                     {
-                                        inventory.Add(i);
+                                        inventory.Remove(i);
                                         curObject.addItem(i);
-                                        output += "You have placed the " + i.name + " at the " 
+                                        output += "You have placed the " + i.name + " at the "
                                             + curObject.name + ".\n";
                                         break;
                                     }
@@ -501,7 +588,7 @@ namespace textBasedGame
                             break;
                         //Punch code
                         case "punch":
-                            if(curObject != null)
+                            if (curObject != null)
                             {
                                 if (input[1].ToLower().Equals(curObject.name.ToLower()))
                                 {
@@ -509,7 +596,7 @@ namespace textBasedGame
                                 }
                             }
 
-                            foreach(Item i in inventory)
+                            foreach (Item i in inventory)
                             {
                                 if (input[1].ToLower().Equals(i.name.ToLower()))
                                 {
@@ -531,9 +618,9 @@ namespace textBasedGame
                                         }
                                         wrenchVengance++;
                                     }
-                                    else 
+                                    else
                                     {
-                                        output += i.Punch() + "\n"; 
+                                        output += i.Punch() + "\n";
                                     }
                                 }
                             }
@@ -548,11 +635,16 @@ namespace textBasedGame
                         case "open":
                             if (input[1].ToLower().Equals("inventory"))
                             {
-                                foreach(Item i in inventory)
+                                foreach (Item i in inventory)
                                 {
                                     output += i.name + ", ";
                                 }
+                                if (output.Length < 1)
+                                {
+                                    output += "There is nothing in your inventory.\n";
+                                }
                             }
+
                             break;
                         default:
                             break;
@@ -667,7 +759,7 @@ namespace textBasedGame
             String curOutput = "";
             foreach (Place p in curPlace.getPlace('n'))
             {
-                curOutput += p.getName() + ",";
+                curOutput += p.getName() + ", ";
             }
             if(curOutput.Length > 0)
             {
@@ -677,7 +769,7 @@ namespace textBasedGame
             curOutput = "";
             foreach (Place p in curPlace.getPlace('e'))
             {
-                curOutput += p.getName() + ",";
+                curOutput += p.getName() + ", ";
             }
             if (curOutput.Length > 0)
             {
@@ -687,7 +779,7 @@ namespace textBasedGame
             curOutput = "";
             foreach (Place p in curPlace.getPlace('s'))
             {
-                curOutput += p.getName() + ",";
+                curOutput += p.getName() + ", ";
             }
             if (curOutput.Length > 0)
             {
@@ -697,7 +789,7 @@ namespace textBasedGame
             curOutput = "";
             foreach (Place p in curPlace.getPlace('w'))
             {
-                curOutput += p.getName() + ",";
+                curOutput += p.getName() + ", ";
             }
             if (curOutput.Length > 0)
             {
