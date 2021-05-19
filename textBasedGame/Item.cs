@@ -46,14 +46,14 @@ namespace textBasedGame
         {
             get
             {
-                if (_fixed)
+                /**if (_fixed)
                 {
                     Console.WriteLine("The " + _name + " is not broken.");
                 }
                 else
                 {
                     Console.WriteLine("The " + _name + " is broken.");
-                }
+                }**/
 
                 return _fixed;
             }

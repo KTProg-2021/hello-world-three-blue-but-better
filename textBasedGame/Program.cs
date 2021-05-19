@@ -506,9 +506,15 @@ namespace textBasedGame
                             //Checks if the item is at the object you are currently at
                             if (curObject != null)
                             {
-                                foreach (Item i in curObject.getItem())
+                                if (input[1].ToLower().Equals("all"))
                                 {
-                                    if (input[1].ToLower().Equals(i.name.ToLower()))
+                                    ArrayList itemList = new ArrayList();
+                                    foreach (Item i in curObject.getItem())
+                                    {
+                                        itemList.Add(i);
+                                    }
+
+                                    foreach (Item i in itemList)
                                     {
                                         //Adds it to inventory, removes it from the current object
                                         inventory.Add(i);
@@ -523,7 +529,29 @@ namespace textBasedGame
                                         {
                                             output += "It is broken.\n";
                                         }
-                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    foreach (Item i in curObject.getItem())
+                                    {
+                                        if (input[1].ToLower().Equals(i.name.ToLower()))
+                                        {
+                                            //Adds it to inventory, removes it from the current object
+                                            inventory.Add(i);
+                                            curObject.removeItem(i);
+                                            output += "You have taken the " + i.name + ".\n";
+                                            output += i.TakeText;
+                                            if (i.Fixed)
+                                            {
+                                                output += "It is in good condition.\n";
+                                            }
+                                            else
+                                            {
+                                                output += "It is broken.\n";
+                                            }
+                                            break;
+                                        }
                                     }
                                 }
                             }
