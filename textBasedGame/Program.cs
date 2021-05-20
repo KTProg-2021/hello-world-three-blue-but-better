@@ -24,69 +24,69 @@ namespace textBasedGame
             SittingArea.EnterText = "Description of place";
 
             //Kitchen Objects
-            Object Sink = new Object("Sink", true);
+            Object Sink = new Object("Sink", 1, 0, 1, -1);
             Kitchen.setObject(Sink);
             Sink.ApproachText = "Description of thing";
 
-            Object Fridge = new Object("Fridge", true);
+            Object Fridge = new Object("Fridge", 1, 1, 1, -1);
             Kitchen.setObject(Fridge);
             Fridge.ApproachText = "Description of thing";
 
-            Object Counter = new Object("Counter", true);
+            Object Counter = new Object("Counter", 1, -1, 1, -1);
             Kitchen.setObject(Counter);
             Counter.ApproachText = "Description of thing";
 
             //Storage Objects
-            Object CleaningCloset = new Object("Cleaning Closet", true);
+            Object CleaningCloset = new Object("Cleaning Closet", 1, -1, 1, -1);
             Storage.setObject(CleaningCloset);
             CleaningCloset.ApproachText = "Description of thing";
 
-            Object FoodSupplies = new Object("Food Supplies", true);
+            Object FoodSupplies = new Object("Food Supplies", 1, -1, 1, -1);
             Storage.setObject(FoodSupplies);
             FoodSupplies.ApproachText = "Description of thing";
 
             //Bathroom 
-            Object BSink = new Object("Sink", true);
+            Object BSink = new Object("Sink", 1, 0, 1, -1);
             Bathroom.setObject(BSink);
             BSink.ApproachText = "Description of thing";
 
-            Object Toilet = new Object("Toilet", true);
+            Object Toilet = new Object("Toilet", 1, 0, 1, -1);
             Bathroom.setObject(Toilet);
             Toilet.ApproachText = "Description of thing";
 
             //Drive thru objects 
-            Object DTRegister = new Object("Drive-Thru Cash Register", true);
+            Object DTRegister = new Object("Drive-Thru Cash Register", 1, 0, 1, -1);
             DriveThru.setObject(DTRegister);
             DTRegister.ApproachText = "Description of thing";
 
-            Object DTCounter = new Object("Counter", true);
+            Object DTCounter = new Object("Counter", 1, -1, 1, -1);
             DriveThru.setObject(DTCounter);
             DTCounter.ApproachText = "Description of thing";
 
             //sitting area
-            Object SodaMachine = new Object("Soda Machine", true);
+            Object SodaMachine = new Object("Soda Machine", 1, 0, 1, -1);
             SittingArea.setObject(SodaMachine);
             SodaMachine.ApproachText = "Description of thing";
 
-            Object Tables = new Object("Tables", true);
+            Object Tables = new Object("Tables", 1, -1, 0, -1);
             SittingArea.setObject(Tables);
             Tables.ApproachText = "Description of thing";
 
             //Regiser Object 
-            Object PickUp = new Object("Pick up", true);
+            Object PickUp = new Object("Pick up", 1, -1, 1, -1);
             CashRegister.setObject(PickUp);
             PickUp.ApproachText = "Description of thing";
 
-            Object IceCreamMachine = new Object("Ice Cream Machine", true);
+            Object IceCreamMachine = new Object("Ice Cream Machine", 1, 0, 1, -1);
             CashRegister.setObject(IceCreamMachine);
             IceCreamMachine.ApproachText = "Description of thing";
 
-            Object Register = new Object("Register", true);
+            Object Register = new Object("Register", 1, 0, 1, -1);
             CashRegister.setObject(Register);
             Register.ApproachText = "Description of thing";
 
             //Hallway Objects
-            Object CreepyMural = new Object("Creepy Mural", false);
+            Object CreepyMural = new Object("Creepy Mural", 0, 0, 0, -1);
             Hallway.setObject(CreepyMural);
             CreepyMural.ApproachText = "The mural is creepy, and you very much want to leave it.";
 
@@ -94,94 +94,94 @@ namespace textBasedGame
             //parentObject.addItem(name);
 
             //Kitchen------ -
-            Item Fridge_Potatoes = new Item("Potatoes", true);
+            Item Fridge_Potatoes = new Item("Potatoes", -1, -1, 1, 0);
             Fridge.addItem(Fridge_Potatoes);
 
-            Item Fridge_Meat = new Item("Meat", true);
+            Item Fridge_Meat = new Item("Meat", -1, -1, 1, 0);
             Fridge.addItem(Fridge_Meat);
 
-            Item Fridge_Soda = new Item("Soda", true);
+            Item Fridge_Soda = new Item("Soda", 1, -1, 1, -1);
             Fridge.addItem(Fridge_Soda);
 
-            Item Counter_CuttingBoard = new Item("Cutting Board", true);
+            Item Counter_CuttingBoard = new Item("Cutting Board", 1, -1, 1, -1);
             Counter.addItem(Counter_CuttingBoard);
 
-            Item Counter_Knife = new Item("Knife", true);
+            Item Counter_Knife = new Item("Knife", 1, -1, 1, -1);
             Counter.addItem(Counter_Knife);
 
-            Item Counter_Veggies = new Item("Veggies", true);
+            Item Counter_Veggies = new Item("Veggies", -1, -1, 1, 0);
             Counter.addItem(Counter_Veggies);
 
-            Item Counter_Bread = new Item("Bread", true);
+            Item Counter_Bread = new Item("Bread", -1, -1, 1, 0);
             Counter.addItem(Counter_Bread);
 
-            Item Sink_Dishes = new Item("Dishes", true);
+            Item Sink_Dishes = new Item("Dishes", -1, -1, 1, 0);
             Sink.addItem(Sink_Dishes);
 
-            Item Sink_Soap = new Item("Soap", true);
+            Item Sink_Soap = new Item("Soap", -1, -1, 1, -1);
             Sink.addItem(Sink_Soap);
 
-            Item Sink_Rag = new Item("Rag", true);
+            Item Sink_Rag = new Item("Rag", -1, -1, 1, -1 );
             Sink.addItem(Sink_Rag);
 
             //Cash Register---------- -
-            Item Register_Pen = new Item("Pen", true);
+            Item Register_Pen = new Item("Pen", 1, -1, 1, -1);
             Register.addItem(Register_Pen);
 
-            Item Register_Pencil = new Item("Pencil", true);
+            Item Register_Pencil = new Item("Pencil", 1, -1, 1, -1);
             Register.addItem(Register_Pencil);
 
-            Item Register_Reciept = new Item("Reciept", true);
+            Item Register_Reciept = new Item("Reciept", 1, -1, 1, -1);
             Register.addItem(Register_Reciept);
 
-            Item PickUp_Napkins = new Item("Napkins", true);
+            Item PickUp_Napkins = new Item("Napkins", 1, -1, 1, -1);
             PickUp.addItem(PickUp_Napkins);
 
-            Item PickUp_Condiments = new Item("Condiments", true);
+            Item PickUp_Condiments = new Item("Condiments", -1, -1, 1, -1);
             PickUp.addItem(PickUp_Condiments);
 
-            Item IceCreamMachine_Screwdriver = new Item("Screwdriver", true);
+            Item IceCreamMachine_Screwdriver = new Item("Screwdriver", 1, -1, 1, -1);
             IceCreamMachine.addItem(IceCreamMachine_Screwdriver);
 
             //Sitting area
-            Item SodaMachine_Cups = new Item("Cups", true);
+            Item SodaMachine_Cups = new Item("Cups", 1, -1, 1, -1);
             SodaMachine.addItem(SodaMachine_Cups);
 
-            Item SodaMachine_Straws = new Item("Straws", true);
+            Item SodaMachine_Straws = new Item("Straws", 1, -1, 1, -1);
             SodaMachine.addItem(SodaMachine_Straws);
 
 
             //Storage-------- -
-            Item CleaningCloset_Mop = new Item("Mop", true);
+            Item CleaningCloset_Mop = new Item("Mop", 1, -1, 1, -1);
             CleaningCloset.addItem(CleaningCloset_Mop);
 
-            Item CleaningCloset_Rag = new Item("Rag", true);
+            Item CleaningCloset_Rag = new Item("Rag", -1, -1, 1, -1);
             CleaningCloset.addItem(CleaningCloset_Rag);
 
-            Item CleaningCloset_ToiletPaper = new Item("Toilet Paper", true);
+            Item CleaningCloset_ToiletPaper = new Item("Toilet Paper", 1, -1, 1, -1);
             CleaningCloset.addItem(CleaningCloset_ToiletPaper);
 
-            Item CleaningCloset_Bucket = new Item("Bucket", true);
+            Item CleaningCloset_Bucket = new Item("Bucket", 1, -1, 1, -1);
             CleaningCloset.addItem(CleaningCloset_Bucket);
 
-            Item FoodSupplies_Napkins = new Item("Napkins", true);
+            Item FoodSupplies_Napkins = new Item("Napkins", 1, -1, 1, -1);
             FoodSupplies.addItem(FoodSupplies_Napkins);
 
-            Item FoodSupplies_Condiments = new Item("Condiments", true);
+            Item FoodSupplies_Condiments = new Item("Condiments", 11, -1, 1, -1);
             FoodSupplies.addItem(FoodSupplies_Condiments);
 
 
             //Drive thru
-            Item DTRegister_Earpiece = new Item("Earpiece", true);
+            Item DTRegister_Earpiece = new Item("Earpiece", 1, 1, -1, 1);
             DTRegister.addItem(DTRegister_Earpiece);
 
-            Item DTRegister_Tickets = new Item("Tickets", true);
+            Item DTRegister_Tickets = new Item("Tickets", 1, -1, 1, -1);
             DTRegister.addItem(DTRegister_Tickets);
 
-            Item DTCounter_Pen = new Item("Pen", true);
+            Item DTCounter_Pen = new Item("Pen", 1, -1, 1, -1);
             DTCounter.addItem(DTCounter_Pen);
 
-            Item DTCounter_Pencil = new Item("Pencil", true);
+            Item DTCounter_Pencil = new Item("Pencil", 1, -1, 1, -1);
             DTCounter.addItem(DTCounter_Pencil);
 
 
@@ -218,7 +218,7 @@ namespace textBasedGame
 
 
             int wrenchVengance = 0;
-            Item CleaningCloset_Wrench = new Item("Wrench", true);
+            Item CleaningCloset_Wrench = new Item("Wrench", 1, -1, 1, -1);
             CleaningCloset.addItem(CleaningCloset_Wrench);
             CleaningCloset_Wrench.TakeText = "The mystical wrench can fix all things.";
 
@@ -462,14 +462,7 @@ namespace textBasedGame
                                     output += "You are infront of the " + o.name + ".\n";
                                     output += curObject.ApproachText;
 
-                                    if (o.Fixed)
-                                    {
-                                        output += "It is in good condition.\n";
-                                    }
-                                    else
-                                    {
-                                        output += "It is broken.\n";
-                                    }
+                                    output += o.printConditions();
 
                                     //Prints out items
                                     if (curPlace.getObject().Count > 0)
@@ -521,14 +514,7 @@ namespace textBasedGame
                                         curObject.removeItem(i);
                                         output += "You have taken the " + i.name + ".\n";
                                         output += i.TakeText;
-                                        if (i.Fixed)
-                                        {
-                                            output += "It is in good condition.\n";
-                                        }
-                                        else
-                                        {
-                                            output += "It is broken.\n";
-                                        }
+                                        output += i.printConditions();
                                     }
                                 }
                                 else
@@ -542,11 +528,11 @@ namespace textBasedGame
                                             curObject.removeItem(i);
                                             output += "You have taken the " + i.name + ".\n";
                                             output += i.TakeText;
-                                            if (i.Fixed)
+                                            if (i.Fixed == 1)
                                             {
                                                 output += "It is in good condition.\n";
                                             }
-                                            else
+                                            else if(i.Fixed == 0)
                                             {
                                                 output += "It is broken.\n";
                                             }
@@ -673,6 +659,17 @@ namespace textBasedGame
                                 }
                             }
 
+                            break;
+                        case "turn":
+                            if (curObject != null) {
+                                if (input[1].ToLower().Equals("on") || input[1].ToLower().Equals("on " + curObject.name))
+                                {
+                                    output += curObject.TurnOn();
+                                } else if (input[1].ToLower().Equals("off") || input[1].ToLower().Equals("off " + curObject.name))
+                                {
+                                    output += curObject.TurnOff();
+                                }
+                            }
                             break;
                         default:
                             break;

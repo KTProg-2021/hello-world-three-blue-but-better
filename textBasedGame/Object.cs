@@ -5,18 +5,20 @@ using System.Text;
 
 namespace textBasedGame
 {
-    class Object
+    class Object : Item
     {
         //Array of items will need to be added
 
         //Constructor
-        private String _name, _approachText;
-        private Boolean _fixed;
+        private String _approachText;
         private ArrayList _items;
-        public Object(String name, Boolean inFixed)
+        public Object(string name, int inFixed, int inOn, int inClean, int inCooked) : base(name, inFixed, inOn, inClean, inCooked)
         {
-            _name = name;
-            _fixed = inFixed;
+            this.name = name;
+            Fixed = inFixed;
+            On = inOn;
+            Clean = inClean;
+            Cooked = inCooked;
             _items = new ArrayList();
             _approachText = "";
         }
@@ -30,7 +32,7 @@ namespace textBasedGame
         {
             return _items;
         }
-        
+
         public void removeItem(Item value)
         {
             _items.Remove(value);
@@ -47,103 +49,6 @@ namespace textBasedGame
                 _approachText = value + "\n";
             }
         }
-
-        public Boolean Fixed
-        {
-            get
-            {/**
-                if (_fixed)
-                {
-                    Console.WriteLine("The " + _name + " is not broken.");
-                }
-                else
-                {
-                    Console.WriteLine("The " + _name + " is broken.");
-                }**/
-
-                return _fixed;
-            }
-
-        }
-
-
-        public String Fix()
-        {
-            String output;
-            if (!_fixed)
-            {
-               output = "You have fixed the " + _name + ".";
-            }
-            else
-            {
-                output = "The " + _name + " does not need fixing.";
-            }
-            _fixed = true;
-            return output;
-        }
-
-        public String Punch()
-        {
-            String output;
-            if (_fixed)
-            {
-                output = "Great job.  You have broken the " + _name + ".";
-            }
-            else
-            {
-                output = "The " + _name + " is already broken. You break it some more.";
-            }
-            _fixed = false;
-            return output;
-        }
-
-
-        //Get/set methods
-        //Name
-        public String name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                _name = value;
-            }
-        }
-
-
-
-
     }
-    /**
-    public string ItemCond(string NameOfItem, bool CondOfItem)
-    {
-        string rv = "";
-        switch (NameOfItem)
-        {
-            case "Fridge":
-                switch (CondOfItem)
-                {
-                    case true:
-                        Console.WriteLine("Fridge is running");
-                        break;
-                    case false:
-                        Console.WriteLine("Fridge is not Running");
-                        break;
-                    default:
-                        Console.WriteLine("Null");
-                        break;
-                }
-                break;
-            case :
-                Console.WriteLine("Case 2");
-                break;
-            default:
-                Console.WriteLine("Default case");
-                break;
 
-                return rv;
-        }
-    }**/
 }
