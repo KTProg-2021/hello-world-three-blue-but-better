@@ -32,6 +32,10 @@ namespace textBasedGame
             Kitchen.setObject(Fridge);
             Fridge.ApproachText = "Description of thing";
 
+            Object Stove = new Object("Stove", 1, 0, 1, -1);
+            Kitchen.setObject(Stove);
+            Stove.ApproachText = "Haha lamo stove.\n(You feel like you may be able to cook things here)";
+
             Object Counter = new Object("Counter", 1, -1, 1, -1);
             Kitchen.setObject(Counter);
             Counter.ApproachText = "Description of thing";
@@ -93,9 +97,16 @@ namespace textBasedGame
             //Item name = new Item("name", true);
             //parentObject.addItem(name);
 
+            Item Toilet_DirtyWater = new Item("Dirty Water", -1, -1, 0, 0);
+            Toilet.addItem(Toilet_DirtyWater);
+
             //Kitchen------ -
             Item Fridge_Potatoes = new Item("Potatoes", -1, -1, 1, 0);
             Fridge.addItem(Fridge_Potatoes);
+
+            Item Fridge_Bleach = new Item("Bleach", -1, -1, -1, -1);
+            Fridge.addItem(Fridge_Bleach);
+            Fridge_Bleach.TakeText = "You wonder why the bleach is in the fridge.\nYou feel like it could be used to clean water.\n";
 
             Item Fridge_Meat = new Item("Meat", -1, -1, 1, 0);
             Fridge.addItem(Fridge_Meat);
@@ -124,6 +135,12 @@ namespace textBasedGame
             Item Sink_Rag = new Item("Rag", -1, -1, 1, -1 );
             Sink.addItem(Sink_Rag);
 
+            Item BSink_Soap = new Item("Soap", -1, -1, 1, -1);
+            BSink.addItem(BSink_Soap);
+
+            Item BSink_Rag = new Item("Rag", -1, -1, 1, -1);
+            BSink.addItem(BSink_Rag);
+
             //Cash Register---------- -
             Item Register_Pen = new Item("Pen", 1, -1, 1, -1);
             Register.addItem(Register_Pen);
@@ -150,6 +167,8 @@ namespace textBasedGame
             Item SodaMachine_Straws = new Item("Straws", 1, -1, 1, -1);
             SodaMachine.addItem(SodaMachine_Straws);
 
+            Item Stove_Spatula = new Item("Spatula", 1, -1, 1, -1);
+            Stove.addItem(Stove_Spatula);
 
             //Storage-------- -
             Item CleaningCloset_Mop = new Item("Mop", 1, -1, 1, -1);
@@ -227,7 +246,8 @@ namespace textBasedGame
                 "\nmove - north, south, east, west (ex. move south) \napproach - object name (ex. approach sink)" +
                 "\ntake - item name (ex. take rag)\nplace - item name (ex. place rag)" +
                 "\npunch - object/item name (ex. punch sink)\nfix - object/item name (ex. fix sink)" +
-                "\nopen inventory\n");
+                "\nother verbs include cook, clean, dirty, turn on/off, hint, and leave(an object)" +
+                "\nas well as open inventory and view item name (ex. view potatoes)\n");
 
             //current place
             Place curPlace = SittingArea;
@@ -289,10 +309,11 @@ namespace textBasedGame
                 if (curStr.ToLower().Contains("help"))
                 {
                     output += "Options: " +
-                    "\nmove - north, south, east, west (ex. move south) \napproach - object name (ex. approach sink)" +
-                    "\ntake - item name (ex. take rag)\nplace - item name (ex. place rag)" +
-                    "\npunch - object/item name (ex. punch sink)\nfix - object/item name (ex. fix sink)" +
-                    "\nopen inventory\n";
+                "\nmove - north, south, east, west (ex. move south) \napproach - object name (ex. approach sink)" +
+                "\ntake - item name (ex. take rag)\nplace - item name (ex. place rag)" +
+                "\npunch - object/item name (ex. punch sink)\nfix - object/item name (ex. fix sink)" +
+                "\nother verbs include cook, clean, dirty, turn on/off, hint, and leave(an object)" +
+                "\nas well as open inventory and view item name (ex. view potatoes)\n";
                     Console.WriteLine(output);
                 }
                 else if (curStr.ToLower().Contains("hint"))
@@ -510,8 +531,16 @@ namespace textBasedGame
                                     foreach (Item i in itemList)
                                     {
                                         //Adds it to inventory, removes it from the current object
-                                        inventory.Add(i);
-                                        curObject.removeItem(i);
+                                        
+                                        if (i != Toilet_DirtyWater)
+                                        {
+                                            inventory.Add(i);
+                                            curObject.removeItem(i);
+                                        }
+                                        else
+                                        {
+                                            inventory.Add(new Item("Dirty Water", -1, -1, 0, -1));
+                                        }
                                         output += "You have taken the " + i.name + ".\n";
                                         output += i.TakeText;
                                         output += i.printConditions();
@@ -525,7 +554,10 @@ namespace textBasedGame
                                         {
                                             //Adds it to inventory, removes it from the current object
                                             inventory.Add(i);
-                                            curObject.removeItem(i);
+                                            if (i != Toilet_DirtyWater)
+                                            {
+                                                curObject.removeItem(i);
+                                            }
                                             output += "You have taken the " + i.name + ".\n";
                                             output += i.TakeText;
                                             if (i.Fixed == 1)
@@ -662,12 +694,128 @@ namespace textBasedGame
                             break;
                         case "turn":
                             if (curObject != null) {
-                                if (input[1].ToLower().Equals("on") || input[1].ToLower().Equals("on " + curObject.name))
+                                if (input[1].ToLower().Equals("on") || input[1].ToLower().Equals("on " + curObject.name.ToLower()))
                                 {
                                     output += curObject.TurnOn();
-                                } else if (input[1].ToLower().Equals("off") || input[1].ToLower().Equals("off " + curObject.name))
+                                } 
+                                else if (input[1].ToLower().Equals("off") || input[1].ToLower().Equals("off " + curObject.name.ToLower()))
                                 {
                                     output += curObject.TurnOff();
+                                }
+                            }
+                            break;
+                        case "clean":
+                            if (Cont("Soap", inventory) || Cont("Rag", inventory) || Cont("Mop", inventory))
+                            {
+                                if (curObject != null)
+                                {
+                                    if (input[1].ToLower().Equals(curObject.name.ToLower()))
+                                    {
+                                        output += curObject.makeClean() + "\n";
+                                    }
+                                }
+
+                                foreach (Item i in inventory)
+                                {
+                                    if (input[1].ToLower().Equals(i.name.ToLower()))
+                                    {
+                                        output += i.makeClean() + "\n";
+                                        if (i.name == "Dirty Water" && Cont("Bleach", inventory))
+                                        {
+                                            inventory.Add(new Item("Clean Water", -1, -1, 1, -1));
+                                            inventory.Remove(i);
+                                            output += "You now have clean water.";
+                                        }else if(i.name == "Dirty Water")
+                                        {
+                                            output += "You need bleach to clean the water.\nI wonder where it is.\nSylvie totally put it somewhere normal and not the Fridge at all.\n";
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                output += "You need something to clean stuff with for that.\n";
+                            }
+
+                            if (output.Length < 1)
+                            {
+                                output += "That item is not here to make clean (your spelling must be correct).\n";
+                            }
+                            break;
+                        case "dirty":
+                            if (Cont("Dirty Water", inventory))
+                            {
+                                if (curObject != null)
+                                {
+                                    if (input[1].ToLower().Equals(curObject.name.ToLower()))
+                                    {
+                                        output += curObject.makeDirty() + "\n";
+                                    }
+                                }
+
+                                foreach (Item i in inventory)
+                                {
+                                    if (input[1].ToLower().Equals(i.name.ToLower()))
+                                    {
+                                        output += i.makeDirty() + "\n";
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                output += "You need dirty water for that (in the toilet).\n";
+                            }
+
+                            if (output.Length < 1)
+                            {
+                                output += "That item is not here to make dirty (your spelling must be correct).\n";
+                            }
+                            break;
+                        case "cook":
+                            if (curObject == Stove && curObject.On == 1)
+                            {
+                                foreach (Item i in inventory)
+                                {
+                                    if (input[1].ToLower().Equals(i.name.ToLower()))
+                                    {
+                                        if (i.name.ToLower() == "dirty water" || i.name.ToLower() == "clean water")
+                                        {
+                                            i.Cooked = 1;
+                                            output += "You have boiled the " + i.name + ".\n";
+
+                                        }
+                                        else
+                                        {
+                                            output += i.Cook() + "\n";
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (curObject.On == 0)
+                                {
+                                    output += "You need to turn the stove on.\n";
+                                }
+                                else
+                                {
+                                    output += "You need to be at the stove to cook things -_-.\n";
+                                }
+                            }
+
+                            if (output.Length < 1)
+                            {
+                                output += "You can't cook that.\n";
+                            }
+                            break;
+                        case "view":
+                            foreach(Item i in inventory)
+                            {
+                                if(i.name.ToLower() == input[1].ToLower())
+                                {
+                                    output += "You look at the " + i.name + ".\n";
+                                    output += i.printConditions();
                                 }
                             }
                             break;
@@ -761,6 +909,18 @@ namespace textBasedGame
 
         }
 
+        public static Boolean Cont(String str, ArrayList l)
+        {
+            bool output = false;
+            foreach (Item i in l)
+            {
+                if(i.name.ToLower() == str.ToLower())
+                {
+                    output = true;
+                }
+            }
+            return output;
+        }
         public static String enterPlace(Place curPlace)
         {
             String output = "You are in the " + curPlace.getName() + ".\n";

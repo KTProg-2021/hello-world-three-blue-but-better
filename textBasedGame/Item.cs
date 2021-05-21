@@ -78,7 +78,7 @@ namespace textBasedGame
             {
                 output += "It is cooked.\n";
             }
-            else if (_fixed == 0)
+            else if (_cooked == 0)
             {
                 output += "It is uncooked.\n";
             }
@@ -102,17 +102,18 @@ namespace textBasedGame
             String output;
             if (_cooked == 0)
             {
-                output = "You have turned on the " + _name + ".";
+                output = "You have cooked the " + _name + ".";
 
                 _cooked = 1;
+                _name = "Cooked " + _name;
             }
             else if (_cooked == 1)
             {
-                output = "The " + _name + " is alrerady on.";
+                output = "The " + _name + " is alrerady cooked.";
             }
             else
             {
-                output = "You cannot turn on the " + _name + ".";
+                output = "You cannot turn cook the " + _name + ".";
             }
             return output;
         }
@@ -134,17 +135,17 @@ namespace textBasedGame
             String output;
             if (_clean == 0)
             {
-                output = "You have turned on the " + _name + ".";
+                output = "You have cleaned the " + _name + ".";
 
                 _clean = 1;
             }
             else if (_clean == 1)
             {
-                output = "The " + _name + " is alrerady on.";
+                output = "The " + _name + " is alrerady clean.";
             }
             else
             {
-                output = "You cannot turn on the " + _name + ".";
+                output = "You cannot clean the " + _name + ".";
             }
             return output;
         }
@@ -154,16 +155,16 @@ namespace textBasedGame
             String output;
             if (_clean == 1)
             {
-                output = "You have turn off the " + _name + ".";
+                output = "You have made the " + _name + " dirty.";
                 _clean = 0;
             }
             else if (_clean == 0)
             {
-                output = "The " + _name + " is already off..";
+                output = "The " + _name + " is already dirty.";
             }
             else
             {
-                output = "You cannot turn off the " + _name + ".";
+                output = "You cannot make the " + _name + " dirty.";
             }
             return output;
         }
